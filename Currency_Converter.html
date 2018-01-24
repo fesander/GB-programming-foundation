@@ -4,5 +4,5 @@
     var euroRate = parseFloat(69.3374929)
     var dollarRate = parseFloat(56.7214974)
     var Rub = prompt("Введите сумму в рублях:")
-    alert(Rub + "р. = " + Math.round(Rub/euroRate * 100) / 100 + " евро\n" + Rub + "р. = " + Math.round(Rub/dollarRate * 100) / 100 + " $")
+    alert(Rub + "р. = " + (Rub/euroRate).toFixed(2) + " евро\n" + Rub + "р. = " + (Rub/dollarRate).toFixed(2) + " $")
 </script>
