@@ -1,0 +1,35 @@
+<meta charset="utf-8">
+<script>
+    //Riddle
+    var rightAnswersNumber = 0
+    var numberOfRiddles = 3
+    var attempt
+
+    var riddles = [
+        "Кто в детстве ходит на 4 ногах, в зралости на 2, а в старости на 3?",
+        "Я нашел её в лесу, чем долльше я её искал, тем дальше она от меня уходила, я принес её в руке, ъотя и не нашел",
+        "Что может в одно и то же время: стоять и ходить, висеть и стоять, ходить и лежать?"
+    ]
+    var rightAnswers = [
+        "человек",
+        "заноза",
+        "часы"
+    ]
+    
+    alert("Привет, тебя ожидает викторина из " + numberOfRiddles + " загадок\nНа каждую загадку дается 3 попытки\nНачинаем")
+    for (var i = parseInt(0); i < numberOfRiddles; i++) {
+        var resp = prompt(riddles[i])
+        attempt = 0;
+        while(resp.toLocaleLowerCase() != rightAnswers[i] && ++attempt < 3) {
+            alert("Попытка номер " + attempt + " провалилась. Попробуй еще раз")
+            resp = prompt(riddles[i])
+        }
+        if (attempt >= 3)
+            alert("Попытка номер " + attempt + " провалилась.\nТы не угадал, правильный ответ был - '" + rightAnswers[i] + "'\nРаунд " + parseInt(i+1) + " проигран")
+        else {
+            alert ("Молодец!!!\nРаунд " + parseInt(i+1) + " выигран")
+            rightAnswersNumber++
+        }
+    }
+    alert("Игра окончена\nТы отгадал " + rightAnswersNumber + " загадки из " + numberOfRiddles)
+</script>
