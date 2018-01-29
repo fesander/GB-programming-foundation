@@ -1,0 +1,29 @@
+<meta charset="utf-8">
+<script>
+	var deposit;
+	var percent;
+	var result = '';
+	var profit;
+	var regExpDeposit = /^\d+\.?\d*$/
+
+	do {
+        deposit = prompt ("Введи сумму вклада\nНапример: 1234.34")
+    //Если ввели не число или число < 0, то продолжаем запрос процентной ставки у ползователя
+    } while (!regExpDeposit.test(deposit) || deposit <= 0)
+    
+    //Запрос у пользователя процентной ставки
+    do {
+        percent = prompt ("Введи процентную ставку\nНапример: 4.6")
+    //Если ввели не число или число не входит в полуинтервал (0 - 100], то продолжаем запрос процентной ставки у ползователя
+    } while (!regExpDeposit.test(percent) || percent <= 0 || percent > 100) 
+	
+	deposit = parseFloat(deposit);
+	percent = parseFloat(percent);
+
+	for (var i = 0; i < 5; i++) {
+		profit = parseFloat((deposit * percent / 100).toFixed(2));
+		deposit = parseFloat((deposit + profit).toFixed(2));
+		result += parseInt(i + 1) + ")Вклад: " + deposit + "р.\tПрибыль: " + profit + "р.\n";
+	}
+	alert(result);
+</script>

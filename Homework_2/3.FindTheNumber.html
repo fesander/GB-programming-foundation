@@ -1,0 +1,47 @@
+<meta charset="utf-8">
+<script>
+    var theRandomNumber = parseInt(Math.random() * 100);
+    var numberOfPlayers;
+    var Gamers = [];
+    var winner;
+    var userAnswer;
+    var regExpDeposit = /^([1-5])$/; //Регулярное выразение, которое матчится только на числа 1,2,3,4,5
+    
+    alert("Приветствую на игре, угадай число!"); 
+    //Запрос у пользователя количества игроков
+    do {
+        numberOfPlayers = parseInt(prompt("Сколько будет игроков?\nВведи число от 1 до 5"));
+    //Если ввели не целое число, то продолжаем запрос у ползователя
+    } while (!regExpDeposit.test(numberOfPlayers));
+
+    //Заполнение массива имен игроков
+    for (var i = 0; i < numberOfPlayers; i++) {
+        Gamers[i] = prompt("Введи имя игрока " + parseInt(i+1));
+    }
+
+    do {
+        for (var i = 0; i < numberOfPlayers; i++) {
+            userAnswer = prompt("Играет пользователь \'" + Gamers[i] + "\'\nКакое число от 0 до 100 загадал компьютер?\n Введите 'q', если сдаётесь");
+            if (userAnswer == 'q') {
+                winner = "nobody";
+                break;                              //Выход из цикла for
+            }
+            if (userAnswer > theRandomNumber)
+                alert("Моё чило меньше");
+            else if (userAnswer < theRandomNumber) 
+                alert("Моё чило больше");
+            else if (userAnswer == theRandomNumber) {
+                winner = Gamers[i];
+                break;                              //Выход из цикла for
+            }
+            else
+                alert("Вы ввели что-то не то\nВведите число");
+        }
+    } while (winner == null);
+    if (winner == "nobody")
+        alert("В этой игре победил помпьютер");
+    else
+        alert ("Поздравляю!!!\nПобедил " + winner);
+
+
+</script>
